@@ -5,7 +5,7 @@
 #define CYLINDERS 5000 
 
 /// FCFS
-int fcfs(int initial_pos); 
+int fcfs(int initial_pos, int request[REQUESTS]); 
 
 /// SSTF 
 int sstf(int initial_pos); 

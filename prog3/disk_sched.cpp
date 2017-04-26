@@ -23,26 +23,27 @@ int main(int argc, char *argv[])
         cout << "indicate the initial direction of the movement of the disk ";
         cout << "head." << endl;
         exit(1);
-    }       
-
-    /// Define array to hold random cylinder requests
-    int request[REQUESTS]; 
+    }        
     
+    /// Array to hold random cylinder requests
+    int request[REQUESTS];
+    //int request[REQUESTS] = {98, 183, 37, 122, 14, 124, 65, 67}; 
+
     /// Seed random number generator
     srandom((unsigned) time(NULL));
 
     /// Fill with rand mod number of cylinders
     for (int i = 0; i < REQUESTS; i++)
-        request[i] = rand() % CYLINDERS;
- 
+        request[i] = rand() % CYLINDERS; 
+
     // for (int i = 0; i < REQUESTS; i++)
         // cerr << request[i] << "\n"; 
 
     /// Print results
     cout << "Total head movement required by each algorithm:" << endl;
-    cout << "FCFS: " << fcfs(initial_pos) << endl;
-    // cout << "SSTF: " << sstf(initial_pos) << endl;
-    // cout << "SCAN: " << scan(initial_pos) << endl;
+    cout << "FCFS: " << fcfs(initial_pos, request) << endl;
+    cout << "SSTF: " << sstf(initial_pos) << endl;
+    cout << "SCAN: " << scan(initial_pos) << endl;
     // cout << "C-SCAN: " << c_scan(initial_pos) << endl;
     // cout << "LOOK: " << look(initial_pos) << endl;
     // cout << "C-LOOK: " << c_look(initial_pos) << endl;
