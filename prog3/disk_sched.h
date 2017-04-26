@@ -8,10 +8,10 @@
 int fcfs(int initial_pos, int request[REQUESTS]); 
 
 /// SSTF 
-int sstf(int initial_pos); 
+int sstf(int initial_pos, int request[REQUESTS]); 
 
 /// SCAN
-int scan(int initial_pos); 
+int scan(int initial_pos, int request[REQUESTS]); 
 
 /// C-SCAN
 int c_scan(int initial_pos); 
