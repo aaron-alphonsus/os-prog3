@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
     /// Read in initial disk head position
     int initial_pos = 0; 
     initial_pos = atoi(argv[1]); 
-    if (initial_pos < -5000 || initial_pos > 5000)
+    if (initial_pos < -1*CYLINDERS || initial_pos > CYLINDERS)
     {
         cout << "Enter an initial position below 5000, using + or - to ";
         cout << "indicate the initial direction of the movement of the disk ";

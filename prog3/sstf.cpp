@@ -1,4 +1,4 @@
-#include <iostream> //comment out
+//#include <iostream> //comment out
 #include <algorithm>
 #include <cmath>
 
@@ -26,11 +26,10 @@ int sstf(int initial_pos, int request[REQUESTS])
     //     cerr << duplicate[i] << " ";
     // cerr << "\n";
 
-    for(int i = 0; i < 8; i++)
-    //for(int i = 0; i < REQUESTS; i++)
+    for(int i = 0; i < REQUESTS; i++)
     {
         //cerr << "SST = "; 
-        for(int j = i; j < 8; j++)
+        for(int j = i; j < REQUESTS; j++)
         {
             //cerr << sst << " ";
             st = abs(current_pos - duplicate[j]);

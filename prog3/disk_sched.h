@@ -1,8 +1,8 @@
 #ifndef DISK_SCHED_H
 #define DISK_SCHED_H
 
-#define REQUESTS 1000
-#define CYLINDERS 5000 
+#define REQUESTS 8
+#define CYLINDERS 200 
 
 /// FCFS
 int fcfs(int initial_pos, int request[REQUESTS]); 
