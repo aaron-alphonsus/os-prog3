@@ -1,9 +1,9 @@
 #include <algorithm>
-#include <iostream> //comment out
+// #include <iostream> //comment out
 
 #include "disk_sched.h"
 
-using namespace std; // comment out
+// using namespace std; // comment out
 
 int c_scan(int initial_pos, int request[REQUESTS])
 {
