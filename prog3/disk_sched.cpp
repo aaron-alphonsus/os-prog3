@@ -44,9 +44,9 @@ int main(int argc, char *argv[])
     cout << "FCFS: " << fcfs(initial_pos, request) << endl;
     cout << "SSTF: " << sstf(initial_pos, request) << endl;
     cout << "SCAN: " << scan(initial_pos, request) << endl;
-    // cout << "C-SCAN: " << c_scan(initial_pos) << endl;
-    // cout << "LOOK: " << look(initial_pos) << endl;
-    // cout << "C-LOOK: " << c_look(initial_pos) << endl;
+    cout << "C-SCAN: " << c_scan(initial_pos, request) << endl;
+    // cout << "LOOK: " << look(initial_pos, request) << endl;
+    // cout << "C-LOOK: " << c_look(initial_pos, request) << endl;
 
     return 0;
 }

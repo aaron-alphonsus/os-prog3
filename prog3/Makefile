@@ -6,7 +6,7 @@ CPP = g++
 CFLAGS = -std=c++11
 
 #OBJECT FILES
-OBJS = fcfs.o sstf.o scan.o disk_sched.o
+OBJS = fcfs.o sstf.o scan.o c_scan.o disk_sched.o
 
 #TARGET FILES
 TARGET = disk_sched
@@ -24,6 +24,9 @@ sstf.o: sstf.cpp disk_sched.h
 
 scan.o: scan.cpp disk_sched.h
 	$(CPP) -c scan.cpp
+
+c_scan.o: c_scan.cpp disk_sched.h
+	$(CPP) -c c_scan.cpp
 
 disk_sched.o: disk_sched.cpp disk_sched.h
 	$(CPP) -c disk_sched.cpp
