@@ -1,11 +1,38 @@
+/**
+ * @file c_look.cpp
+ *
+ * @brief Simulates the C-LOOK scheduling algorithm. 
+ *
+ * Simulates the C-LOOK algorithm and returns total amount of head movement 
+ * required by the algorithm.
+ *   
+ * @author Aaron Alphonsus
+ * 
+ * @date 28 April 2017 
+ */
+
 #include <algorithm>
-// #include <iostream> // TODO: comment out
 #include <vector>
 
 #include "disk_sched.h"
 
 using namespace std;
 
+/**
+ * Simulates the C-LOOK algorithm. Functionality of the C-LOOK was unclear 
+ * regarding direction switching. Used description from here: 
+ * http://courses.teresco.org/cs432_f02/lectures/17-files/17-files.html
+ * The direction switches once there are no pending requests in that direction.
+ *
+ * The function creates two arrays: for requests less than the initial head 
+ * position, and for requests greater. The order in which they are processed 
+ * depends on the initial direction of the disk head. 
+ * 
+ * @param[in] initial_pos Initial disk head position
+ * @param[in] request The random request array generated
+ * 
+ * @return total amount of head movement
+ */
 int c_look(int initial_pos, int request[REQUESTS])
 {
     vector<int> down;
@@ -13,7 +40,6 @@ int c_look(int initial_pos, int request[REQUESTS])
 
     int head_movement = 0;
     int current_pos = abs(initial_pos);
-    // cerr << "Current pos = " << current_pos << endl;
     
     /// Place requests into an 'up' and 'down' vector which will be sorted
     for(int i = 0; i < REQUESTS; i++)
@@ -24,7 +50,8 @@ int c_look(int initial_pos, int request[REQUESTS])
             up.push_back(request[i]);
         /// Assumes that == are processed first, therefore 0 head movement
     }   
- 
+
+    /// If the head is moving left initially
     if(initial_pos < 0)
     {
         /// Sort both up and down in descending order
@@ -49,6 +76,7 @@ int c_look(int initial_pos, int request[REQUESTS])
     }
     else
     {
+        /// Sort both up and down in ascending order
         sort(up.begin(), up.end());
         sort(down.begin(), down.end()); 
 
@@ -68,14 +96,6 @@ int c_look(int initial_pos, int request[REQUESTS])
             current_pos = down[i]; 
         }
     }
-    
-    // for(int i = 0; i < down.size(); i++)
-    //     cerr << down[i] << " ";
-    // cerr << "\n";
-
-    // for(int i = 0; i < up.size(); i++)
-    //     cerr << up[i] << " ";
-    // cerr << "\n";
  
     return head_movement;
 }

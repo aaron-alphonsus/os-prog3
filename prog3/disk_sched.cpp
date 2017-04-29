@@ -1,3 +1,20 @@
+/**
+ * @file disk_sched.cpp
+ *
+ * @brief Main file for the Disk-Scheduling Algorithms. 
+ *
+ * Creates request array and reads in initial disk head position. Passes these 
+ * values into each function. 
+ *  
+ * Compilation Instructions: make 
+ * 
+ * Run: ./disk_sched initial_position
+ *
+ * @author Aaron Alphonsus
+ * 
+ * @date 28 April 2017 
+ */
+
 #include <iostream>
 #include <stdlib.h>
 
@@ -5,12 +22,22 @@
 
 using namespace std;
 
+/**
+ * Creates an array of random requests, and takes in initial disk head position 
+ * from the command line. These are passed to each of the disk scheduling 
+ * functions. The head movement for each function is printed out.
+ *
+ * @param[in] argc Integer count of the command-line arguments 
+ * @param[in] argv Vector of the command-line arguments
+ * 
+ * @return 0 Indicates normal termination of main.
+ */
 int main(int argc, char *argv[])
 {
     /// Check for correct number of command-line arguments
     if (argc != 2)
     {
-        cout << "Usage: ./disk_sched initial-position" << endl;
+        cout << "Usage: ./disk_sched initial_position" << endl;
         exit(0);
     }
     
@@ -27,7 +54,6 @@ int main(int argc, char *argv[])
     
     /// Array to hold random cylinder requests
     int request[REQUESTS];
-    //int request[REQUESTS] = {98, 183, 37, 122, 14, 124, 65, 67}; 
 
     /// Seed random number generator
     srandom((unsigned) time(NULL));
@@ -35,9 +61,6 @@ int main(int argc, char *argv[])
     /// Fill with rand mod number of cylinders
     for (int i = 0; i < REQUESTS; i++)
         request[i] = rand() % CYLINDERS; 
-
-    // for (int i = 0; i < REQUESTS; i++)
-        // cerr << request[i] << "\n"; 
 
     /// Print results
     cout << "Total head movement required by each algorithm:" << endl;
