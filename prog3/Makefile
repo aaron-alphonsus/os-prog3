@@ -34,7 +34,6 @@ look.o: look.cpp disk_sched.h
 c_look.o: c_look.cpp disk_sched.h
 	$(CPP) -c c_look.cpp
 
-
 disk_sched.o: disk_sched.cpp disk_sched.h
 	$(CPP) -c disk_sched.cpp
 

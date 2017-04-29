@@ -1,4 +1,5 @@
 #include <algorithm>
+// #include <iostream> // TODO: comment out
 #include <vector>
 
 #include "disk_sched.h"
@@ -29,17 +30,16 @@ int c_look(int initial_pos, int request[REQUESTS])
         /// Sort both up and down in descending order
         sort(down.rbegin(), down.rend());
         sort(up.rbegin(), up.rend());
-    
-        if(up.size() != 0)
-            down.push_back(0);
+     
         /// Service the 'down' array
         for(int i = 0; i < down.size(); i++)
         {
             head_movement += abs(current_pos - down[i]);
             current_pos = down[i]; 
         }
-        /// Head position wraps around to the last cylinder
-        current_pos = CYLINDERS - 1;
+        /// Head position wraps around to the highest request in 'up' array
+        if(up.size() > 0)
+            current_pos = up[0];
         /// Service 'up' array
         for(int i = 0; i < up.size(); i++)
         {
@@ -52,16 +52,15 @@ int c_look(int initial_pos, int request[REQUESTS])
         sort(up.begin(), up.end());
         sort(down.begin(), down.end()); 
 
-        if(down.size() != 0)
-            up.push_back(CYLINDERS - 1);
         /// Service 'up' array
         for(int i = 0; i < up.size(); i++)
         {
             head_movement += abs(current_pos - up[i]);
             current_pos = up[i];
         }
-        /// Head position wraps around to the first cylinder
-        current_pos = 0; 
+        /// Head position wraps around to the lowest request in 'down' array
+        if(down.size() > 0)
+            current_pos = down[0]; 
         /// Service the 'down' array
         for(int i = 0; i < down.size(); i++)
         {
@@ -79,5 +78,4 @@ int c_look(int initial_pos, int request[REQUESTS])
     // cerr << "\n";
  
     return head_movement;
-
 }

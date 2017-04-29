@@ -26,15 +26,15 @@ int main(int argc, char *argv[])
     }        
     
     /// Array to hold random cylinder requests
-    //int request[REQUESTS];
-    int request[REQUESTS] = {98, 183, 37, 122, 14, 124, 65, 67}; 
+    int request[REQUESTS];
+    //int request[REQUESTS] = {98, 183, 37, 122, 14, 124, 65, 67}; 
 
     /// Seed random number generator
     srandom((unsigned) time(NULL));
 
     /// Fill with rand mod number of cylinders
-    //for (int i = 0; i < REQUESTS; i++)
-        //request[i] = rand() % CYLINDERS; 
+    for (int i = 0; i < REQUESTS; i++)
+        request[i] = rand() % CYLINDERS; 
 
     // for (int i = 0; i < REQUESTS; i++)
         // cerr << request[i] << "\n"; 
